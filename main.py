@@ -1,4 +1,5 @@
 import sqlalchemy
+import json
 from sqlalchemy.orm import sessionmaker
 from models import create_tables, Publisher, Book, Shop, Stock, Sale
 
@@ -55,9 +56,13 @@ def find_publisher_id():
     for c in session.query(Book.title, Shop.name, Sale.price, Sale.date_sale).join(Publisher).join(Stock).join(Shop).join(Sale).filter(Publisher.id== id_publisher ):
         print(c)
 
+
+
+
 session.close()
 
 
+if __name__ == "__main__":
 
-find_publshier_name()
-find_publisher_id()
+    find_publshier_name()
+    find_publisher_id()
